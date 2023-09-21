@@ -42,14 +42,30 @@ app.secret_key = '123456'
 
 @app.route('/')
 def home():  # put application's code here
-    return render_template(homepage, title='kdkd')
+    #return render_template(homepage, title='kdkd')
+    return '测试首页访问'
 
 
 #/lain/gpt
+    # { msgs:[
+    #     { speaker: lain, text: "xxxx"},
+    #     { speaker: user, text: "xxxx"},
+    #     ...
+    # ],
+    # }
+    #
 @app.route('/lain/gpt')
 def lain():
     # 接受parament,解析json,调用接口
-    request.form.g
+    msg = request.form.get('msg')
+    json_msg = json.loads(msg)
+    msgs = list.append(json_msg['msgs'])
+    for msg in msgs:
+        speaker = msg['speaker']
+        text = msg['text']
+        print(speaker)
+        print(text)
+
 
 
 
